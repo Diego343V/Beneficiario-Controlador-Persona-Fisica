@@ -28,8 +28,8 @@
             box-shadow: 0 0 15px rgba(0,0,0,0.3);
             box-sizing: border-box;
             margin: 0 auto;
-            position: relative; /* Necesario para la marca de agua */
-            overflow: hidden; /* Evita que la marca de agua se salga de los bordes */
+            position: relative; 
+            overflow: hidden; 
         }
 
         /* MARCA DE AGUA */
@@ -44,12 +44,11 @@
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center;
-            opacity: 0.08; /* Transparencia baja para no estorbar */
+            opacity: 0.08; 
             z-index: 0; 
-            pointer-events: none; /* Permite dar clic a los inputs que están encima */
+            pointer-events: none; 
         }
 
-        /* Asegurar que el contenido esté por encima de la marca de agua */
         .row, .section-title, .legend-box, .legal-text, .main-header, .signature-section, .form-title {
             position: relative;
             z-index: 1;
@@ -124,9 +123,18 @@
         .btn-clear { background-color: #e74c3c; }
 
         .btn-copy-dom { 
-            background-color: #3498db; color: white; padding: 4px 10px; font-size: 10px; 
-            border-radius: 3px; cursor: pointer; margin-top: 5px; align-self: flex-end; display: inline-block;
+            background-color: #3498db; 
+            color: white; 
+            padding: 6px 12px; 
+            font-size: 10px; 
+            font-weight: bold;
+            border-radius: 4px; 
+            cursor: pointer; 
+            border: none;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            transition: background 0.3s;
         }
+        .btn-copy-dom:hover { background-color: #2980b9; }
 
         .hide-on-pdf { /* Clase para ocultar en PDF */ }
     </style>
@@ -266,9 +274,7 @@
             <div class="field" style="flex: 1.5;"><label>Correo Electrónico</label><input type="email"></div>
         </div>
 
-        <div style="display: flex; justify-content: space-between; align-items: flex-end;">
-            <div class="section-title" style="margin: 20px 0 5px 0; width: 100%;">DOMICILIO PARTICULAR</div>
-        </div>
+        <div class="section-title">DOMICILIO PARTICULAR</div>
         
         <div class="row">
             <div class="field" style="flex: 2.5;"><label>Calle</label><input type="text" id="p-calle"></div>
@@ -292,9 +298,11 @@
             </div>
         </div>
 
-        <div style="display: flex; justify-content: space-between; align-items: flex-end; position: relative; z-index: 10;">
-            <div class="section-title" style="margin: 20px 0 5px 0; width: 100%;">DOMICILIO FISCAL</div>
-            <button type="button" class="btn-copy-dom hide-on-pdf" onclick="copiarDomicilio()" style="position: absolute; right: 0; top: 15px;">⬇ Mismo Domicilio</button>
+        <div class="section-title" style="margin-top: 25px;">DOMICILIO FISCAL</div>
+        
+        <!-- BOTÓN DE COPIAR BIEN VISIBLE AQUÍ ABAJO DEL TÍTULO -->
+        <div class="row hide-on-pdf" style="justify-content: flex-end; margin-top: -5px; margin-bottom: 10px; z-index: 10;">
+            <button type="button" class="btn-copy-dom" onclick="copiarDomicilio()">⬇ COPIAR DOMICILIO PARTICULAR</button>
         </div>
 
         <div class="row">
